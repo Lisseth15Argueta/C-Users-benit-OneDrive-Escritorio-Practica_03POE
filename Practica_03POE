@@ -1,0 +1,66 @@
+namespace Practica_3
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        //private bool img = true;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Utilizar la clase openfiledialog para visualizar la ventana
+            OpenFileDialog abrir = new OpenFileDialog();
+
+            //Filtro para abrir imagenes jpg
+            abrir.Filter = "JPGDE (*.JPG) | *.JPG";
+
+            //Validar ventana y mostrar
+            //showGialog sobre una ventana, el if valida muestra respuesta en la ventana
+            if (abrir.ShowDialog() == DialogResult.OK)
+            {
+                //Validaciones sobre ventanas img
+                //Obteniendo la ruta 
+                pictureBox1.Image = Image.FromFile(abrir.FileName);
+            }
+            else
+            {
+            }
+        }
+
+        //Inilizar el estado de la imagen
+        private bool ising = true;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (ising)
+            {
+                pictureBox2.Image = Image.FromFile("C:\\Users\\benit\\OneDrive\\Escritorio\\ambiente.jpg");
+                ising = false;
+            }
+            else
+            {
+                pictureBox2.Image = Image.FromFile("C:\\Users\\benit\\OneDrive\\Escritorio\\cielo.jpg");
+                ising = true;
+            }
+        }
+
+        //método llamado timer1_Tickque se ejecuta
+        //cuando ocurre un evento de temporizador.
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (ising)
+            {
+                //Este es un condicional que verifica si la variable isinges falsa.
+                pictureBox3.Image = Image.FromFile("C:\\Users\\benit\\OneDrive\\Escritorio\\ambiente.jpg");
+                ising = false;
+            }
+            else
+            {
+                //Este es un condicional que verifica si la variable isinges verdadera
+                pictureBox3.Image = Image.FromFile("C:\\Users\\benit\\OneDrive\\Escritorio\\cielo.jpg");
+                ising = true;
+            }
+        }
+    }
+}
